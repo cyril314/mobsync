@@ -17,7 +17,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/Pawdroid/Free-servers.git
           git fetch upstream
-          git checkout upstream/master sub
+          git checkout upstream/main sub
           git add sub
           git commit -m "Sync subfolder from upstream"
           git push origin master
