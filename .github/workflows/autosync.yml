@@ -23,3 +23,5 @@ jobs:
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          user_email: bot@github.com
+          user_name: sync-upstream-bot
