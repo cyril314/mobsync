@@ -1,4 +1,4 @@
-name: Auto Sync with Upstream
+name: Sync Single File from Upstream
 
 on:
   push:
@@ -10,14 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Sync with Upstream
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: master
-          user_email: bot@github.com
-          user_name: sync-upstream-bot
-          publish_dir: ./
+      - name: Download file from Upstream
+        run: |
+          curl -sLJO https://github.com/Pawdroid/Free-servers/raw/main/sub
+          git add sub
+          git commit -m "Sync file 'sub' from Upstream"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
