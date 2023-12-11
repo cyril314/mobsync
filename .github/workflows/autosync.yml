@@ -1,4 +1,4 @@
-name: Sync Single File from Upstream
+name: Sync Subfolder from Upstream
 
 on:
   push:
@@ -13,11 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Sync single file from Upstream
+      - name: Sync subfolder from Upstream
         run: |
           git remote add upstream https://github.com/Pawdroid/Free-servers.git
           git fetch upstream
           git checkout upstream/master sub
+          git add sub
+          git commit -m "Sync subfolder from upstream"
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
