@@ -1,0 +1,24 @@
+name: Auto Sync with Upstream
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: Pawdroid/Free-servers@main
+
+      - name: Sync with Upstream
+        uses: Pawdroid/Free-servers@main
+        with:
+          username: sync-upstream-bot
+          useremail: bot@github.com
+          upstream: master
+          upstream-branch: master
+          branch: master
+          token: ${{ github.token }}
