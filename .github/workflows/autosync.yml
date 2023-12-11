@@ -11,14 +11,13 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: Pawdroid/Free-servers@main
+        uses: actions/checkout@v2
 
       - name: Sync with Upstream
-        uses: Pawdroid/Free-servers@main
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          username: sync-upstream-bot
-          useremail: bot@github.com
-          upstream: master
-          upstream-branch: master
-          branch: master
-          token: ${{ github.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: master
+          user_email: bot@github.com
+          user_name: sync-upstream-bot
+          publish_dir: ./
