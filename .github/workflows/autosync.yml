@@ -18,10 +18,10 @@ jobs:
           git remote add upstream https://github.com/Pawdroid/Free-servers.git
           git fetch upstream
           git checkout upstream/main sub
+          git config --global user.email "bot@github.com"
+          git config --global user.name "sync-upstream-bot"
           git add sub
           git commit -m "Sync subfolder from upstream"
           git push origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          user_email: bot@github.com
-          user_name: sync-upstream-bot
